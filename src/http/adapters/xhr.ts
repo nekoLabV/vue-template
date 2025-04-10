@@ -9,7 +9,7 @@ export default class XhrAdapter {
     this.#defaultConfig = { ...this.#defaultConfig, ...config }
   }
 
-  request(config: RequestConfig) {
+  request(config: RequestConfig): Promise<HttpResponse> {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest()
       const { url, method = 'GET', headers = {}, data } = config

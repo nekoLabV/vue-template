@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import servers from '@/servers'
 import storage from './local'
+import eventBus from '@/utils/eventBus'
 
 const isLoading = ref<boolean>(false)
 
@@ -14,6 +15,13 @@ onMounted(() => {
   storage.set('name', { value: 'xxx', expire: 10 })
   const name = storage.get('name')
   console.log(name)
+
+  eventBus.on('unauthorized', (data: HttpResponse) => {
+    console.log('unauthorized', data)
+  })
+  eventBus.on('server-error', () => {
+    console.log('server-error')
+  })
 })
 </script>
 
