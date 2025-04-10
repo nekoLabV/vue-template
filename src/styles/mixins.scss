@@ -1,0 +1,100 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition($property: all, $duration: 0.3s, $timing-function: cubic-bezier(0.4, 0, 0.2, 1)) {
+  transition: $property $duration $timing-function;
+}
+
+@mixin transparent-hover-style {
+  & {
+    position: relative;
+    @content;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: currentColor;
+    opacity: 0;
+    border-radius: 8px;
+    @include transition(opacity, 0.175s);
+  }
+  &:hover {
+    &::after {
+      opacity: 0.08;
+    }
+  }
+}
+
+@mixin first-and-last-not-margin {
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin scroll-bar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin not-scroll-bar($type: none) {
+  @if $type == none {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  } @else {
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+
+@mixin text-overflow($type: ellipsis, $direction: vertical, $line: 1) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: $type;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: $direction;
+  -webkit-line-clamp: $line;
+}
+
+@mixin transparent-mac-srcoll {
+  &::-webkit-scrollbar {
+    width: 8px;
+    transition: opacity 0.2s;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+  body: {
+    scrollbar-gutter: stable;
+  }
+}
