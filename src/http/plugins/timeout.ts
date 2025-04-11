@@ -1,3 +1,5 @@
+import type { RequestConfig } from '@/types/http.type'
+
 export default function timeoutPlugin(timeout = 8000) {
   return {
     beforeRequest(config: RequestConfig) {

@@ -1,3 +1,5 @@
+import type { RequestConfig } from '@/types/http.type'
+
 export default {
   beforeRequest(config: RequestConfig) {
     console.log('请求开始:', config)

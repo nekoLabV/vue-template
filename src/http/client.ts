@@ -1,3 +1,11 @@
+import type {
+  HttpAdapter,
+  HttpClient,
+  HttpPluginHook,
+  RequestConfig,
+  HttpConfig
+} from '@/types/http.type'
+
 export default class Client implements HttpClient {
   #adapter: HttpAdapter
   #plugins: HttpPluginHook[]
@@ -15,7 +23,9 @@ export default class Client implements HttpClient {
     } else if (plugin.beforeRequest || plugin.onError || plugin.afterResponse) {
       this.#plugins.push(plugin)
     } else {
-      throw new Error('Invalid plugin format. Plugin should be a function or an object with an install method.')
+      throw new Error(
+        'Invalid plugin format. Plugin should be a function or an object with an install method.'
+      )
     }
   }
 
@@ -28,7 +38,7 @@ export default class Client implements HttpClient {
   async request(config: RequestConfig) {
     for (const plugin of this.#plugins) {
       if (plugin.beforeRequest) {
-        config = await plugin.beforeRequest(config) ?? config
+        config = (await plugin.beforeRequest(config)) ?? config
       }
     }
 
@@ -38,7 +48,7 @@ export default class Client implements HttpClient {
     } catch (error) {
       for (const plugin of this.#plugins) {
         if (plugin.onError) {
-          error = await plugin.onError(error, config) ?? error
+          error = (await plugin.onError(error, config)) ?? error
         }
       }
       throw error
@@ -46,7 +56,7 @@ export default class Client implements HttpClient {
 
     for (const plugin of this.#plugins) {
       if (plugin.afterResponse) {
-        response = await plugin.afterResponse(response, config) ?? response
+        response = (await plugin.afterResponse(response, config)) ?? response
       }
     }
 

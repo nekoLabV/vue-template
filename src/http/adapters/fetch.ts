@@ -1,3 +1,5 @@
+import type { HttpConfig, RequestConfig } from '@/types/http.type'
+
 export default class FetchAdapter {
   #defaultConfig: HttpConfig
   constructor() {
@@ -15,9 +17,9 @@ export default class FetchAdapter {
 
     const queryString = params
       ? '?' +
-      Object.entries(params)
-        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-        .join('&')
+        Object.entries(params)
+          .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+          .join('&')
       : ''
 
     const response = await fetch(url + queryString, {

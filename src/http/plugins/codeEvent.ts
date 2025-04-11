@@ -1,3 +1,4 @@
+import type { HttpResponse } from '@/types/http.type'
 import eventBus from '@/utils/eventBus'
 
 export default {

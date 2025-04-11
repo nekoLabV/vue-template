@@ -16,8 +16,8 @@ const props = defineProps({
   }
 })
 
-const isShow = ref(false)
-const timer = ref<number>()
+const isShow = ref<boolean>(false)
+const timer = ref<number>(0)
 
 function open() {
   isShow.value = true
@@ -29,7 +29,9 @@ function close() {
 }
 
 onUnmounted(() => {
-  timer.value && clearTimeout(timer.value)
+  if (timer.value) {
+    clearTimeout(timer.value)
+  }
 })
 
 defineExpose({

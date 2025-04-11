@@ -1,4 +1,4 @@
-import Loading from '@/components/loading.vue'
+import Loading from '@/components/Loading.vue'
 import type { DirectiveBinding } from 'vue'
 import { createApp } from 'vue'
 

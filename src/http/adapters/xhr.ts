@@ -1,3 +1,5 @@
+import type { HttpConfig, HttpResponse, RequestConfig } from '@/types/http.type'
+
 export default class XhrAdapter {
   #defaultConfig: HttpConfig
   constructor() {

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { HttpResponse } from './types/http.type'
 import { ref, onMounted } from 'vue'
 import servers from '@/servers'
 import storage from './local'

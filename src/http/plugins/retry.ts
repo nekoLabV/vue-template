@@ -1,3 +1,5 @@
+import type { HttpClient, RequestConfig } from '@/types/http.type'
+
 export default function retryPlugin(retries = 3) {
   return {
     client: undefined as HttpClient | undefined,
