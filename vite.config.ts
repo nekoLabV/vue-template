@@ -6,9 +6,9 @@ import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 const notBuildModule = () => {
   return {
-    name: "not-build-module",
+    name: 'not-build-module',
     transformIndexHtml(html: string) {
-      return html.replace(` type="module" crossorigin`, "");
+      return html.replace(` type="module" crossorigin`, '')
     }
   }
 }
@@ -27,12 +27,7 @@ export default defineConfig({
       }
     }
   },
-  plugins: [
-    vue(),
-    svgLoader(),
-    cssInjectedByJsPlugin(),
-    notBuildModule()
-  ],
+  plugins: [vue(), svgLoader(), cssInjectedByJsPlugin(), notBuildModule()],
   resolve: {
     alias: {
       '~': path.resolve(__dirname, './'),
