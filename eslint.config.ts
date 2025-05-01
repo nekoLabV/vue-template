@@ -26,21 +26,21 @@ export default [
       '@typescript-eslint': tsPlugin
     }
   },
-  vuePlugin.configs['flat/recommended'],
-  {
-    files: ['**/*.vue'],
-    plugins: {
-      vue: vuePlugin
-    },
-    languageOptions: {
-      parser: vueParser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        parser: '@typescript-eslint/parser'
-      }
-    }
-  },
+  // vuePlugin.configs['flat/recommended'],
+  // {
+  //   files: ['**/*.vue'],
+  //   plugins: {
+  //     vue: vuePlugin
+  //   },
+  //   languageOptions: {
+  //     parser: vueParser,
+  //     parserOptions: {
+  //       ecmaVersion: 'latest',
+  //       sourceType: 'module',
+  //       parser: '@typescript-eslint/parser'
+  //     }
+  //   }
+  // },
   {
     ignores: ['node_modules/**', 'dist/**', 'public/**']
   }

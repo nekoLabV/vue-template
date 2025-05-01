@@ -1,31 +1,32 @@
-<script setup lang="ts">
-import type { HttpResponse } from './types/http.type'
+<script lang="ts" setup>
+import BgLine from '@/components/bg/line.vue'
 import { ref, onMounted } from 'vue'
 import servers from '@/servers'
 import storage from './local'
 import eventBus from '@/utils/eventBus'
+import { randomColor } from '@/utils/tools'
 
-const isLoading = ref<boolean>(false)
+const color1 = ref<string>(randomColor())
+const color2 = ref<string>(randomColor())
 
 onMounted(() => {
-  isLoading.value = true
-  setTimeout(() => {
-    isLoading.value = false
-  }, 2000)
-  servers.getData('./mockdata.json')
-  storage.set('name', { value: 'xxx', expire: 10 })
-  const name = storage.get('name')
-  console.log(name)
-
-  eventBus.on('unauthorized', (data: HttpResponse) => {
-    console.log('unauthorized', data)
-  })
-  eventBus.on('server-error', () => {
-    console.log('server-error')
-  })
+  setInterval(() => {
+    color1.value = randomColor()
+    color2.value = randomColor()
+  }, 2500)
 })
 </script>
 
 <template>
-  <div class="template" v-loading="isLoading">template</div>
+  <div>
+    <BgLine :color="[color1, color2]" style="width: 400px; height: 600px; margin: auto">
+      <div
+        style="display: flex; flex-direction: column; justify-content: center; align-items: center"
+      >
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+      </div>
+    </BgLine>
+  </div>
 </template>
