@@ -27,5 +27,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="template" v-loading="isLoading">template</div>
+  <div class="w-full" v-loading="isLoading">template</div>
 </template>

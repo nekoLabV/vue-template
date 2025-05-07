@@ -1,8 +1,10 @@
 import path from 'path'
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
+
 import svgLoader from 'vite-svg-loader'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
+import unoCSS from 'unocss/vite'
 
 const notBuildModule = () => {
   return {
@@ -27,7 +29,7 @@ export default defineConfig({
       }
     }
   },
-  plugins: [vue(), svgLoader(), cssInjectedByJsPlugin(), notBuildModule()],
+  plugins: [vue(), svgLoader(), cssInjectedByJsPlugin(), notBuildModule(), unoCSS()],
   resolve: {
     alias: {
       '~': path.resolve(__dirname, './'),

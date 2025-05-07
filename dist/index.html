@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./assets/template.min.js"></script>
+    
   </head>
   <body>
-    <div id="map-coord"></div>
-    <script src="https://webapi.amap.com/loader.js"></script>
+    <div id="vue-template"></div>
     <script src="./vue@3.5.12.global.prod.min.js"></script>
-    <script src="./assets/map-coord.min.js"></script>
     <script>
       window.addEventListener('load', () => {
-        window.initMapCoordApp({
-          el: '#map-coord'
+        window.initApp({
+          el: '#vue-template'
         })
       })
     </script>
