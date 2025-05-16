@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <div class="comps-bg-line" :style="{ '--color1': color[0], '--color2': color[1] }">
-    <div style="width: 100%; height: 100%; background-color: black; border-radius: 8px">
+    <div class="w-full h-full bg-black rounded-2">
       <slot></slot>
     </div>
   </div>

@@ -63,19 +63,19 @@ export default class Client implements HttpClient {
     return response
   }
 
-  get(url: string, params?: Record<string, any>, config?: RequestConfig) {
-    return this.request({ ...config, method: 'GET', url, params })
+  get(url: string, data?: Record<string, any>, config?: RequestConfig) {
+    return this.request({ ...config, method: 'GET', url, data })
   }
 
-  post(url: string, data: any, config?: RequestConfig) {
+  post(url: string, data?: any, config?: RequestConfig) {
     return this.request({ ...config, method: 'POST', url, data })
   }
 
-  put(url: string, data: any, config?: RequestConfig) {
+  put(url: string, data?: any, config?: RequestConfig) {
     return this.request({ ...config, method: 'PUT', url, data })
   }
 
-  delete(url: string, config?: RequestConfig) {
-    return this.request({ ...config, method: 'DELETE', url })
+  delete(url: string, data?: any, config?: RequestConfig) {
+    return this.request({ ...config, method: 'DELETE', url, data })
   }
 }
